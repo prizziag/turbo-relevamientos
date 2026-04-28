@@ -1,0 +1,302 @@
+[
+  {
+    "code": "0030000115",
+    "nombre": "4K S.A",
+    "direccion": "Av.Rivadavia 14100",
+    "localidad": "Ramos Mejia"
+  },
+  {
+    "code": "0030000117",
+    "nombre": "Cia Industrial Cervecera S.A.",
+    "direccion": "Senador Benito Ferro 2100",
+    "localidad": "Santos Lugares"
+  },
+  {
+    "code": "0030000183",
+    "nombre": "Castilla Distribuidora Sa",
+    "direccion": "Argerich 1876",
+    "localidad": "San Justo"
+  },
+  {
+    "code": "0030000184",
+    "nombre": "Castilla Distribuidora Sa",
+    "direccion": "Rosas 543",
+    "localidad": "Ciudad De Eduardo Madero"
+  },
+  {
+    "code": "0030000185",
+    "nombre": "Castilla Distribuidora Sa",
+    "direccion": "Peron 6855",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000258",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Hilario Lagos 48",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000265",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Av.Hipolito Yrigoyen 335",
+    "localidad": "Merlo"
+  },
+  {
+    "code": "0030000274",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Francisco De Alfaro 460",
+    "localidad": "Hurlingham"
+  },
+  {
+    "code": "0030000277",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Av.Pellegrini 1141",
+    "localidad": "Lujan"
+  },
+  {
+    "code": "0030000280",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Argerich 1919",
+    "localidad": "San Justo"
+  },
+  {
+    "code": "0030000288",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Intendente Nemesio Alvarez 272",
+    "localidad": "Moreno"
+  },
+  {
+    "code": "0030000297",
+    "nombre": "Delivery Hero E-Commerce S.A.",
+    "direccion": "Av.Rivadavia 14728",
+    "localidad": "Ramos Mejia"
+  },
+  {
+    "code": "0030000376",
+    "nombre": "Grupo 2000 Agrupacion",
+    "direccion": "Colombia 630",
+    "localidad": "Libertad"
+  },
+  {
+    "code": "0030000377",
+    "nombre": "Grupo 2000 Agrupacion",
+    "direccion": "Cristiania 735",
+    "localidad": "Isidro Casanova"
+  },
+  {
+    "code": "0030000388",
+    "nombre": "Grupo 2000 Agrupacion",
+    "direccion": "Triunvirato 5856",
+    "localidad": "Villa Bosch"
+  },
+  {
+    "code": "0030000389",
+    "nombre": "Grupo 2000 Agrupacion",
+    "direccion": "Bermudez 5309",
+    "localidad": "Villa Luzuriaga"
+  },
+  {
+    "code": "0030000442",
+    "nombre": "Gastronomia Emprendimientos S.A.S.",
+    "direccion": "Ricchieri 131",
+    "localidad": "Ramos Mejia"
+  },
+  {
+    "code": "0030000501",
+    "nombre": "Grupo 2000 Agrupacion",
+    "direccion": "Presidente Pero 8560",
+    "localidad": "Pablo Podesta"
+  },
+  {
+    "code": "0030000571",
+    "nombre": "Refineria Bahia Blanca \"Puma\"",
+    "direccion": "Pcias Unidas Y Zapiola",
+    "localidad": "San Justo"
+  },
+  {
+    "code": "0030000625",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Juan Manuel De Rosas 658",
+    "localidad": "Moron"
+  },
+  {
+    "code": "0030000746",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Juan D Peron 23740",
+    "localidad": "San Antonio De Padua"
+  },
+  {
+    "code": "0030000841",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Av Rivadavia 17552",
+    "localidad": "Moron"
+  },
+  {
+    "code": "0030000843",
+    "nombre": "Cencosud S.A.",
+    "direccion": "25 De Mayo 250",
+    "localidad": "Lujan"
+  },
+  {
+    "code": "0030000844",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Garcia Esq Belgrano",
+    "localidad": "Moron"
+  },
+  {
+    "code": "0030000845",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Av Rivadavia 14450",
+    "localidad": "Ramos Mejia"
+  },
+  {
+    "code": "0030000847",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Arias 3279",
+    "localidad": "Castelar"
+  },
+  {
+    "code": "0030000849",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Av Vergara 3275",
+    "localidad": "Hurlingham"
+  },
+  {
+    "code": "0030000850",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Calle 29 Y 18",
+    "localidad": "Mercedes"
+  },
+  {
+    "code": "0030000851",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Av Libertador 28",
+    "localidad": "Merlo"
+  },
+  {
+    "code": "0030000853",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Av Mitre 4650",
+    "localidad": "Caseros"
+  },
+  {
+    "code": "0030000861",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Brandsen 3790",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000877",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Azcuenaga 700",
+    "localidad": "Ca#Uelas"
+  },
+  {
+    "code": "0030000879",
+    "nombre": "Cencosud S.A.",
+    "direccion": "Velez Sarsfield 573",
+    "localidad": "Tapiales"
+  },
+  {
+    "code": "0030000887",
+    "nombre": "Stone S.A.",
+    "direccion": "Av Libertador 765",
+    "localidad": "Merlo"
+  },
+  {
+    "code": "0030000888",
+    "nombre": "Stone S.A.",
+    "direccion": "9 De Julio 32",
+    "localidad": "Moron"
+  },
+  {
+    "code": "0030000893",
+    "nombre": "Garcia Federico",
+    "direccion": "Ruta 3 Km 35.200",
+    "localidad": "Virrey Del Pino"
+  },
+  {
+    "code": "0030000939",
+    "nombre": "Pan American Energy S.L. Suc Arg",
+    "direccion": "Av.Rojo 2825",
+    "localidad": "Gregorio De Laferrere"
+  },
+  {
+    "code": "0030000962",
+    "nombre": "Colavitta Sergio I Y Colavitta",
+    "direccion": "Av Eva Peron 1351",
+    "localidad": "Merlo"
+  },
+  {
+    "code": "0030000995",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "De La Tradicion 680",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000996",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Nicolas Repetto 602",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000997",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Pringles 2514",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000998",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Muñiz 990",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030000999",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Gorriti 1069",
+    "localidad": "Francisco Alvarez"
+  },
+  {
+    "code": "0030001000",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Fragio 90",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030001001",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Las Heras Esq Alvear",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030001003",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Av Brandsen 798",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030001004",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Eduardo Wilde 1435",
+    "localidad": "La Reja"
+  },
+  {
+    "code": "0030001006",
+    "nombre": "Supermercado El Abastecedor Sa",
+    "direccion": "Martin Fierro 4711",
+    "localidad": "Ituzaingo"
+  },
+  {
+    "code": "0030001033",
+    "nombre": "Gayma S.R.L.",
+    "direccion": "Av Julian M Castro 599",
+    "localidad": "Merlo"
+  },
+  {
+    "code": "0030001110",
+    "nombre": "Va No Li  S.A.",
+    "direccion": "Arieta 1802",
+    "localidad": "Villa Luzuriaga"
+  }
+]

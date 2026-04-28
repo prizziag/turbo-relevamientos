@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Relevamientos Pendientes</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --surface2: #1c2230;
+    --border: #2a3441; --text: #e6edf3; --muted: #7d8590;
+    --blue: #009EE3; --dark-blue: #003DA5; --success: #22c55e;
+    --danger: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { min-height: 100%; background: var(--bg); font-family: -apple-system, 'Segoe UI', sans-serif; color: var(--text); }
+
+  /* HEADER */
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 16px; position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; gap: 12px; max-width: 680px; margin: 0 auto; }
+  .header-logo { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .header-logo svg { width: 20px; height: 20px; fill: #fff; }
+  .header-info { flex: 1; min-width: 0; }
+  .header-title { font-size: 14px; font-weight: 700; }
+  .header-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .header-badge { background: var(--blue); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; flex-shrink: 0; }
+
+  /* BODY */
+  .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+
+  /* ESTADO */
+  .state-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 16px; text-align: center; margin-bottom: 16px; }
+  .state-icon { font-size: 32px; margin-bottom: 10px; }
+  .state-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .state-sub { font-size: 12px; color: var(--muted); }
+  .spinner { width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 12px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SUMMARY */
+  .summary { display: flex; gap: 10px; margin-bottom: 14px; }
+  .summary-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12px; color: var(--muted); flex: 1; text-align: center; }
+  .summary-chip strong { display: block; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+
+  /* TABLA */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .table-header { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0; padding: 10px 14px; background: var(--surface2); border-bottom: 1px solid var(--border); }
+  .th { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+
+  .client-row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: center; gap: 0; padding: 12px 14px; border-bottom: 1px solid var(--border); transition: background .12s; }
+  .client-row:last-child { border-bottom: none; }
+  .client-row:active { background: var(--surface2); }
+
+  .cell { padding-right: 10px; }
+  .cell-name { font-size: 12px; font-weight: 600; line-height: 1.3; }
+  .cell-code { font-size: 10px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .cell-addr { font-size: 11px; color: var(--text); line-height: 1.3; }
+  .cell-loc  { font-size: 11px; color: var(--muted); }
+
+  .btn-relevar {
+    background: var(--blue); color: #fff; border: none; border-radius: 8px;
+    padding: 8px 12px; font-size: 11px; font-weight: 700; cursor: pointer;
+    white-space: nowrap; font-family: inherit; display: flex; align-items: center; gap: 5px;
+    text-decoration: none;
+  }
+  .btn-relevar:active { background: var(--dark-blue); }
+
+  /* MOBILE: stack layout en pantallas chicas */
+  @media (max-width: 480px) {
+    .table-header { display: none; }
+    .client-row { grid-template-columns: 1fr auto; grid-template-rows: auto auto; gap: 4px 0; padding: 12px 13px; }
+    .cell-name { grid-column: 1; grid-row: 1; }
+    .cell-addr { grid-column: 1; grid-row: 2; color: var(--muted); font-size: 11px; }
+    .cell-loc  { display: none; }
+    .btn-relevar { grid-column: 2; grid-row: 1 / 3; align-self: center; margin-left: 10px; }
+  }
+
+  /* TOAST */
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(10px); background: var(--success); color: #fff; font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: 20px; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; white-space: nowrap; z-index: 999; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ERROR URL */
+  .alert { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fca5a5; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <!-- Ícono simple D de Danone -->
+      <svg viewBox="0 0 24 24"><path d="M4 4h7c4.4 0 8 3.6 8 8s-3.6 8-8 8H4V4zm4 4v8h3c2.2 0 4-1.8 4-4s-1.8-4-4-4H8z"/></svg>
+    </div>
+    <div class="header-info">
+      <div class="header-title">Relevamientos Pendientes</div>
+      <div class="header-sub" id="headerSub">Cargando…</div>
+    </div>
+    <div class="header-badge" id="headerBadge">—</div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Estado de carga -->
+  <div class="state-card" id="stateLoading">
+    <div class="spinner"></div>
+    <div class="state-title">Cargando clientes…</div>
+    <div class="state-sub">Consultando base de datos</div>
+  </div>
+
+  <!-- Error de parámetros -->
+  <div class="alert" id="alertNoParams" style="display:none">
+    ⚠️ No se recibieron códigos de clientes en la URL. Parámetro esperado: <code>?codes=123,456,789</code>
+  </div>
+
+  <!-- Error de carga -->
+  <div class="state-card" id="stateError" style="display:none">
+    <div class="state-icon">⚠️</div>
+    <div class="state-title">No se pudo cargar la lista</div>
+    <div class="state-sub" id="stateErrorMsg">Verificá la conexión e intentá de nuevo</div>
+  </div>
+
+  <!-- Sin resultados -->
+  <div class="state-card" id="stateEmpty" style="display:none">
+    <div class="state-icon">✅</div>
+    <div class="state-title">Sin relevamientos pendientes</div>
+    <div class="state-sub">No se encontraron clientes para los códigos recibidos</div>
+  </div>
+
+  <!-- Contenido -->
+  <div id="content" style="display:none">
+    <div class="summary">
+      <div class="summary-chip"><strong id="sumTotal">—</strong>Clientes</div>
+      <div class="summary-chip"><strong id="sumLocalidades">—</strong>Localidades</div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">
+        <div class="th">Cliente</div>
+        <div class="th">Dirección</div>
+        <div class="th">Localidad</div>
+        <div class="th"></div>
+      </div>
+      <div id="tableBody"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
+// Reemplazá esta URL con la URL directa al archivo clientes.json en SharePoint.
+// Para obtenerla: abrí el archivo en SharePoint → "..." → Copiar vínculo directo.
+// Formato esperado:
+// https://danone.sharepoint.com/sites/SCONE-BILLSSA/Shared%20Documents/clientes.json
+const JSON_URL = "https://danone.sharepoint.com/sites/SCONE-BILLSSA/_layouts/15/download.aspx?UniqueId=3751fce542a347299339fb9bde61531d&e=MybRux";
+
+// Esquema de deep link que usa la app Turbodata para volver al relevamiento
+const DEEP_LINK_BASE = "one-turbo://store?code=";
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', init);
+
+async function init() {
+  // 1. Leer códigos de la URL (?codes=123,456,789 o ?code=123&code=456)
+  const codes = parseCodes();
+
+  if (codes.length === 0) {
+    hide('stateLoading');
+    show('alertNoParams');
+    return;
+  }
+
+  // 2. Cargar JSON de clientes desde SharePoint
+  let allClientes;
+  try {
+    const res = await fetch(JSON_URL, { credentials: 'include' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allClientes = await res.json();
+  } catch (err) {
+    hide('stateLoading');
+    document.getElementById('stateErrorMsg').textContent = `Error al leer el archivo de clientes: ${err.message}`;
+    show('stateError');
+    return;
+  }
+
+  // 3. Filtrar por los codes recibidos
+  const clientes = allClientes.filter(c => codes.includes(String(c.code)));
+
+  hide('stateLoading');
+
+  if (clientes.length === 0) {
+    show('stateEmpty');
+    return;
+  }
+
+  // 4. Renderizar
+  renderTabla(clientes, codes);
+}
+
+// ─── PARSEAR CÓDIGOS DE URL ───────────────────────────────────────────────────
+function parseCodes() {
+  const params = new URLSearchParams(window.location.search);
+
+  // Formato 1: ?codes=123,456,789
+  if (params.has('codes')) {
+    return params.get('codes').split(',').map(s => s.trim()).filter(Boolean);
+  }
+
+  // Formato 2: ?codes=["123","456"] (URL-encoded JSON array)
+  // Formato 3: ?code=123&code=456&code=789
+  const multi = params.getAll('code');
+  if (multi.length > 0) return multi.map(s => s.trim()).filter(Boolean);
+
+  return [];
+}
+
+// ─── RENDERIZAR TABLA ─────────────────────────────────────────────────────────
+function renderTabla(clientes, codesOriginales) {
+  // Header
+  const localidades = [...new Set(clientes.map(c => c.localidad))];
+  document.getElementById('headerSub').textContent =
+    `${localidades.slice(0,3).join(' · ')}${localidades.length > 3 ? ' · …' : ''}`;
+  document.getElementById('headerBadge').textContent = clientes.length;
+  document.getElementById('sumTotal').textContent = clientes.length;
+  document.getElementById('sumLocalidades').textContent = localidades.length;
+
+  // Filas
+  const body = document.getElementById('tableBody');
+  clientes.forEach(c => {
+    const row = document.createElement('div');
+    row.className = 'client-row';
+    row.innerHTML = `
+      <div class="cell">
+        <div class="cell-name">${esc(c.nombre)}</div>
+        <div class="cell-code">${esc(c.code)}</div>
+      </div>
+      <div class="cell cell-addr">${esc(c.direccion)}</div>
+      <div class="cell cell-loc">${esc(c.localidad)}</div>
+      <a class="btn-relevar" href="${DEEP_LINK_BASE}${encodeURIComponent(c.code)}" onclick="onRelevar(event, '${esc(c.code)}', '${esc(c.nombre)}')">
+        📋 Relevar
+      </a>`;
+    body.appendChild(row);
+  });
+
+  show('content');
+}
+
+// ─── ACCIÓN RELEVAR ───────────────────────────────────────────────────────────
+function onRelevar(event, code, nombre) {
+  // El link <a href="one-turbo://..."> se ejecuta normalmente.
+  // Esto solo muestra el toast de feedback visual.
+  showToast(`Abriendo relevamiento: ${nombre}`);
+}
+
+// ─── UTILS ───────────────────────────────────────────────────────────────────
+function show(id) { document.getElementById(id).style.display = ''; }
+function hide(id) { document.getElementById(id).style.display = 'none'; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
